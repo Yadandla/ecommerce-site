@@ -1,4 +1,6 @@
 export const About = () => {
+    console.log("Home page rendered");
+
     return (
         <>
             {/* Banners Part Starts */}

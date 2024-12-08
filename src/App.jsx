@@ -1,4 +1,4 @@
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { HashRouter, Routes, Route } from "react-router-dom";
 import { Home } from "./pages/Home";
 import { About } from "./pages/About";
 import Applayout from "./components/Applayout";
@@ -14,52 +14,20 @@ import { Account } from "./pages/Account";
 
 const App = () => {
 
-  const router = createBrowserRouter([
-    {
-      path: "/",
-      element: <Applayout />,
-      children: [
-        {
-          path: "/",
-          element: <Home />,
-        },
-        {
-          path: "/about",
-          element: <About />,
-        },
-        {
-          path: "/shop",
-          element: <Shop />,
-        },
-        {
-          path: "/cart",
-          element: <Cart />,
-        },
-        {
-          path: "/wishlist",
-          element: <Wishlist />,
-        },
-        {
-          path: "/account",
-          element: <Account />,
-        },
-      ]
-    }
-  ]);
-
-  // const router = createBrowserRouter(
-  //   createRoutesFromElements(
-  //     <Route>
-  //       <Route path="/" element={<Home />} />
-  //       <Route path="/about" element={<About />} />
-  //       <Route path="/contact" element={<Contact />} />
-  //     </Route>
-  //   )
-  // )
-
   return (
     <StoreProvider>
-      <RouterProvider router={router} />
+      <HashRouter>
+        <Routes>
+          <Route element={<Applayout />}>
+            <Route path="/" element={<Home />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/shop" element={<Shop />} />
+            <Route path="/wishlist" element={<Wishlist />} />
+            <Route path="/account" element={<Account />} />
+            <Route path="/cart" element={<Cart />} />
+          </Route>
+        </Routes>
+      </HashRouter>
     </StoreProvider>
   )
 
